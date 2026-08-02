@@ -76,6 +76,7 @@ Walk `references/checklist.md`.
 |---|---|---|
 | Engineering rationalism (Claude Code product UI) | Tool interfaces, dashboards, technical product pages; user names claude/anthropic style | `references/case-claude-code-rationalism.md` |
 | Dark performance-spec (porsche.cn) | Data-dense pages, benchmarks, performance reports, luxury feel | `references/case-porsche-dark-spec.md` |
+| Monochrome engineering docs (platform.kimi.com) | API/developer docs, spec sheets, technical reference; black-as-accent, neutral shadows, code-as-hero | `references/case-kimi-platform-mono-docs.md` |
 | Chart color grammar | Any page with charts or data visualization | `references/chart-colors.md` |
 | Icon discipline | Any page that uses icons | `references/icons.md` |
 | AI-default anti-patterns | Every design-plan self-check | `references/anti-patterns.md` |
