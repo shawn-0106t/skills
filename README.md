@@ -40,6 +40,7 @@ redesigning an HTML page, report, dashboard, landing page, or data-driven page.
   |---|---|---|
   | Claude Code engineering rationalism | paper base, terracotta accent, four radius states | tool interfaces, dashboards, technical product pages |
   | porsche.cn dark performance-spec | zero radius, zero shadow, hairline seams, red ≤5% | data-dense pages, benchmarks, luxury feel |
+  | Kimi platform docs monochrome | black-as-accent, neutral shadows, code-as-hero | API/developer docs, technical reference pages |
 - **Cross-cutting grammars** — chart color grammar (sequential by default, ≤5 categorical
   hues, colorblind-safe) and icon discipline (functional inline SVG only, 24×24 grid, `currentColor`).
 - **An AI-default anti-pattern list** — the template skins and lazy patterns that get a design
@@ -55,6 +56,7 @@ rationalism-design/
 └── references/
     ├── case-claude-code-rationalism.md         # full design system: colors, type, spacing, components
     ├── case-porsche-dark-spec.md               # dark spec-sheet design system
+    ├── case-kimi-platform-mono-docs.md         # monochrome docs design system
     ├── chart-colors.md                         # chart color grammar
     ├── icons.md                                # icon discipline
     ├── anti-patterns.md                        # AI-default patterns to reject

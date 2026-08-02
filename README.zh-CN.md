@@ -37,6 +37,7 @@
   |---|---|---|
   | Claude Code 工程理性风 | 纸感底色、陶土橙强调色、仅四种圆角 | 工具界面、dashboard、技术产品页 |
   | 保时捷暗黑性能风 | 零圆角零阴影、发丝线分格、红色占比 ≤5% | 数据密集页、跑分/性能报告、高级感 |
+  | Kimi 开放平台文档黑白风 | 黑即强调色、中性阴影、代码即 hero | API/开发者文档、技术参考页 |
 - **横向规范** —— 图表配色语法（默认顺序色阶、分类色 ≤5 种、色盲安全）和图标纪律
   （仅功能性内联 SVG、24×24 网格、`currentColor`）。
 - **AI 默认反模式清单** —— 会导致设计方案被打回的模板化套路，构建前逐行对照检查。
@@ -51,6 +52,7 @@ rationalism-design/
 └── references/
     ├── case-claude-code-rationalism.md         # 完整设计体系：配色、字体、间距、组件
     ├── case-porsche-dark-spec.md               # 暗黑性能风格设计体系
+    ├── case-kimi-platform-mono-docs.md         # 黑白文档风设计体系
     ├── chart-colors.md                         # 图表配色语法
     ├── icons.md                                # 图标纪律
     ├── anti-patterns.md                        # 需要拒绝的 AI 默认模式
