@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>rationalism-design — Reject the AI Default Look</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #f6f7fb;
+    color: #1e293b;
+    line-height: 1.6;
+  }
+
+  /* ---- sticky glass nav ---- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(226,232,240,0.8);
+  }
+  .nav-inner {
+    max-width: 1120px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { color: #64748b; text-decoration: none; font-size: 14px; font-weight: 500; }
+  .nav-links a:hover { color: #1e293b; }
+  .nav-cta {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff !important; padding: 8px 18px; border-radius: 9999px;
+    font-weight: 600 !important;
+  }
+
+  /* ---- hero ---- */
+  .hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 45%, #4c1d95 100%);
+    color: #fff; text-align: center; padding: 110px 24px 90px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(139,92,246,0.35), transparent 70%);
+    top: -200px; right: -150px; border-radius: 50%;
+  }
+  .hero::after {
+    content: ""; position: absolute; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(59,130,246,0.3), transparent 70%);
+    bottom: -200px; left: -120px; border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-block; background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 6px 16px; border-radius: 9999px; font-size: 13px;
+    margin-bottom: 28px; backdrop-filter: blur(8px);
+  }
+  .hero h1 {
+    font-size: 56px; font-weight: 900; letter-spacing: -0.02em;
+    line-height: 1.15; margin-bottom: 20px; position: relative; z-index: 1;
+  }
+  .hero h1 .grad {
+    background: linear-gradient(90deg, #a78bfa, #60a5fa, #34d399);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p {
+    font-size: 19px; color: #cbd5e1; max-width: 640px; margin: 0 auto 36px;
+    position: relative; z-index: 1;
+  }
+  .hero-buttons { display: flex; gap: 16px; justify-content: center; position: relative; z-index: 1; }
+  .btn-grad {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff; padding: 14px 32px; border-radius: 9999px;
+    font-weight: 700; font-size: 16px; text-decoration: none;
+    box-shadow: 0 10px 30px rgba(102,126,234,0.45);
+    transition: transform 0.2s;
+  }
+  .btn-grad:hover { transform: translateY(-2px); }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.4); color: #fff;
+    padding: 12px 30px; border-radius: 9999px; font-weight: 600;
+    font-size: 16px; text-decoration: none;
+  }
+
+  section { max-width: 1120px; margin: 0 auto; padding: 80px 24px; }
+  .section-tag {
+    display: inline-block; background: #ede9fe; color: #7c3aed;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 5px 14px; border-radius: 9999px; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .section-title { font-size: 36px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 12px; text-align: center; }
+  .section-sub { color: #64748b; text-align: center; max-width: 620px; margin: 0 auto 48px; }
+  .center { text-align: center; }
+
+  /* ---- feature cards ---- */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card {
+    background: #fff; border-radius: 16px; padding: 32px 28px;
+    box-shadow: 0 10px 30px rgba(15,23,42,0.07);
+    border: 1px solid #eef0f6;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 20px 45px rgba(15,23,42,0.12); }
+  .card .icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; margin-bottom: 18px;
+  }
+  .i1 { background: linear-gradient(135deg,#ede9fe,#ddd6fe); }
+  .i2 { background: linear-gradient(135deg,#dbeafe,#bfdbfe); }
+  .i3 { background: linear-gradient(135deg,#d1fae5,#a7f3d0); }
+  .i4 { background: linear-gradient(135deg,#fef3c7,#fde68a); }
+  .i5 { background: linear-gradient(135deg,#fce7f3,#fbcfe8); }
+  .i6 { background: linear-gradient(135deg,#e0e7ff,#c7d2fe); }
+  .card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .card p { font-size: 14px; color: #64748b; }
+
+  /* ---- workflow ---- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .step {
+    background: #fff; border-radius: 16px; padding: 30px 26px;
+    box-shadow: 0 10px 30px rgba(15,23,42,0.06); border: 1px solid #eef0f6;
+  }
+  .step-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff; font-weight: 800; display: flex; align-items: center;
+    justify-content: center; margin-bottom: 16px; font-size: 16px;
+  }
+  .step h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .step p { font-size: 14px; color: #64748b; }
+
+  /* ---- case library ---- */
+  .cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .case-card {
+    background: #fff; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(15,23,42,0.07); border: 1px solid #eef0f6;
+    position: relative; padding: 28px 26px;
+  }
+  .case-card::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+    background: linear-gradient(180deg, #667eea, #764ba2);
+  }
+  .case-card .emoji { font-size: 34px; margin-bottom: 12px; }
+  .case-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .case-card .temper { font-size: 13px; color: #94a3b8; margin-bottom: 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    background: #f1f5f9; color: #475569; font-size: 12px; font-weight: 600;
+    padding: 4px 12px; border-radius: 9999px;
+  }
+
+  /* ---- anti-patterns ---- */
+  .ban-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; margin: 0 auto; }
+  .ban {
+    background: #fff; border: 1px solid #fee2e2; border-radius: 12px;
+    padding: 18px 20px; font-size: 14px; color: #475569;
+    display: flex; gap: 12px; align-items: flex-start;
+    box-shadow: 0 4px 14px rgba(15,23,42,0.04);
+  }
+  .ban .x { color: #ef4444; font-weight: 800; font-size: 16px; line-height: 1.4; }
+
+  /* ---- checklist ---- */
+  .check-list { max-width: 760px; margin: 0 auto; display: grid; gap: 12px; }
+  .check {
+    background: #fff; border-radius: 12px; padding: 16px 20px;
+    border: 1px solid #eef0f6; box-shadow: 0 4px 14px rgba(15,23,42,0.04);
+    font-size: 15px; display: flex; gap: 12px; align-items: flex-start;
+  }
+
+  /* ---- install ---- */
+  .install-wrap { max-width: 760px; margin: 0 auto; }
+  .terminal {
+    background: #0f172a; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 20px 50px rgba(15,23,42,0.25);
+  }
+  .terminal-bar {
+    display: flex; gap: 8px; padding: 14px 18px;
+    background: #1e293b; align-items: center;
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .d1 { background: #f87171; } .d2 { background: #fbbf24; } .d3 { background: #34d399; }
+  .terminal pre {
+    padding: 24px; color: #e2e8f0; font-family: "Cascadia Code", Consolas, monospace;
+    font-size: 14px; line-height: 1.8; overflow-x: auto;
+  }
+  .tk-c { color: #64748b; } .tk-g { color: #34d399; } .tk-b { color: #60a5fa; }
+
+  footer {
+    background: #0f172a; color: #94a3b8; text-align: center;
+    padding: 40px 24px; font-size: 14px;
+  }
+  footer .logo { justify-content: center; color: #fff; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">⚡ rationalism-design</div>
+    <div class="nav-links">
+      <a href="#disciplines">Disciplines</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#cases">Case Library</a>
+      <a href="#install" class="nav-cta">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="hero-badge">✨ A skill for Claude Code / Kimi Code agents</span>
+  <h1>Build web pages that<br><span class="grad">reject the AI default look</span></h1>
+  <p>Modern is not one fixed look — it is the inevitable form of the specific content.
+     Every page needs a reason why only it could look this way.</p>
+  <div class="hero-buttons">
+    <a href="#install" class="btn-grad">🚀 Install the Skill</a>
+    <a href="#disciplines" class="btn-outline">Learn More ↓</a>
+  </div>
+</header>
+
+<section id="disciplines">
+  <div class="center"><span class="section-tag">Core</span></div>
+  <h2 class="section-title">Five Core Disciplines</h2>
+  <p class="section-sub">The principles that keep every page honest, branded, and free of template feel.</p>
+  <div class="cards">
+    <div class="card"><div class="icon i1">🎯</div><h3>Signature from Content</h3><p>The memorable element comes from the content itself — real data, real product UI, real process. Decoration either encodes information or gets deleted.</p></div>
+    <div class="card"><div class="icon i2">🎨</div><h3>One Accent Color</h3><p>Only one hue family gets to shout; everything else stays neutral. Spend it as text, hairlines and small marks — never as large fills.</p></div>
+    <div class="card"><div class="icon i3">📐</div><h3>Type Scale as Personality</h3><p>Tight-tracked headlines against quiet data micro-labels beat swapping fonts. Radius vs. square corners is a brand decision — pick one.</p></div>
+    <div class="card"><div class="icon i4">✂️</div><h3>Subtract</h3><p>Ask of every element: what breaks if I delete it? The Chanel principle — take one accessory off before leaving the house.</p></div>
+    <div class="card"><div class="icon i5">🀄</div><h3>CJK Semantic Line-Breaking</h3><p>Break long Chinese headlines into inline-block semantic chunks — no orphan characters stranded on their own line.</p></div>
+    <div class="card"><div class="icon i6">🧭</div><h3>One Argument per Page</h3><p>Information hierarchy scannable in 3 seconds; each screen carries exactly one core argument.</p></div>
+  </div>
+</section>
+
+<section id="workflow">
+  <div class="center"><span class="section-tag">Process</span></div>
+  <h2 class="section-title">A Gated Workflow</h2>
+  <p class="section-sub">No code until the plan survives the checklist.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Confirm the Style Anchor</h3><p>The gating decision — it determines palette, type, layout and signature. Get it wrong and you redo the whole design system.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Distill, Don't Skin-Copy</h3><p>Reference sites are distilled into design systems — 4–6 named colors, type tiers, layout concept, signature — never copied pixel by pixel.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Plan Self-Check</h3><p>Would this scheme still work for different content? If yes, it is a template — start over. No code until the plan passes.</p></div>
+    <div class="step"><div class="step-num">4</div><h3>Build</h3><p>Single file, zero external dependencies. System sans first, tabular numerals, one choreographed motion sequence with reduced-motion fallback.</p></div>
+    <div class="step"><div class="step-num">5</div><h3>Screenshot Self-Check</h3><p>Never deliver blind. Headless Chrome screenshots, inspected with your own eyes — fix line-breaks, overflow and contrast, then re-shoot.</p></div>
+    <div class="step"><div class="step-num">6</div><h3>Pre-Delivery Checklist</h3><p>Content truthfulness, design discipline, engineering quality, contrast and states — walk every item before shipping.</p></div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="center"><span class="section-tag">Library</span></div>
+  <h2 class="section-title">A Distilled Case Library</h2>
+  <p class="section-sub">Ready-to-use design systems measured from real sites.</p>
+  <div class="cases">
+    <div class="case-card">
+      <div class="emoji">📄</div>
+      <h3>Claude Code Rationalism</h3>
+      <div class="temper">Paper base · terracotta accent · four radius states</div>
+      <div class="chips"><span class="chip">#tool-interfaces</span><span class="chip">#dashboards</span><span class="chip">#product-pages</span></div>
+    </div>
+    <div class="case-card">
+      <div class="emoji">🏎️</div>
+      <h3>Porsche Dark Spec</h3>
+      <div class="temper">Zero radius · zero shadow · hairline seams · red ≤5%</div>
+      <div class="chips"><span class="chip">#data-dense</span><span class="chip">#benchmarks</span><span class="chip">#luxury</span></div>
+    </div>
+    <div class="case-card">
+      <div class="emoji">📚</div>
+      <h3>Kimi Mono Docs</h3>
+      <div class="temper">Black-as-accent · neutral shadows · code-as-hero</div>
+      <div class="chips"><span class="chip">#api-docs</span><span class="chip">#dev-reference</span><span class="chip">#technical</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="bans">
+  <div class="center"><span class="section-tag">Anti-Patterns</span></div>
+  <h2 class="section-title">The AI-Default Reject List</h2>
+  <p class="section-sub">Checked line by line before building — any hit means redo.</p>
+  <div class="ban-list">
+    <div class="ban"><span class="x">✖</span>Cream base + serif display headlines + terracotta orange — the editorial-magazine skin</div>
+    <div class="ban"><span class="x">✖</span>Near-black base + single neon-green accent — the hacker/acid skin</div>
+    <div class="ban"><span class="x">✖</span>Newspaper hairlines + zero radius + dense multi-column — the broadsheet skin</div>
+    <div class="ban"><span class="x">✖</span>Deep-space base + blue-violet glow + glassmorphic cards — the 2021 AI standard kit</div>
+    <div class="ban"><span class="x">✖</span>Generic SaaS card grid — light-gray base, white cards, left gradient bar, chip badges</div>
+    <div class="ban"><span class="x">✖</span>Decoration unrelated to content — mosaics, particles, wave SVGs that are only "pretty"</div>
+  </div>
+</section>
+
+<section id="checklist">
+  <div class="center"><span class="section-tag">Quality</span></div>
+  <h2 class="section-title">Pre-Delivery Checklist</h2>
+  <p class="section-sub">Walk every item. Any failure means go back and fix it.</p>
+  <div class="check-list">
+    <div class="check">✅ Every numeral matches the source data — multiples and percentages survive arithmetic</div>
+    <div class="check">✅ Single accent color; every usage matches a declared role; no large-area fills</div>
+    <div class="check">✅ Zero external dependencies — no web fonts, CDN images, or icon libraries</div>
+    <div class="check">✅ Body text contrast ≥ 4.5:1, large text ≥ 3:1, focus ring ≥ 2px at ≥ 3:1</div>
+    <div class="check">✅ Disabled, loading, empty and error states built — not forgotten</div>
+    <div class="check">✅ Headless Chrome screenshots inspected: first screen, full-length, narrow viewport</div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="center"><span class="section-tag">Install</span></div>
+  <h2 class="section-title">Get Started in Seconds</h2>
+  <p class="section-sub">Copy the skill folder into your agent's skills directory — it activates automatically.</p>
+  <div class="install-wrap">
+    <div class="terminal">
+      <div class="terminal-bar"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span></div>
+      <pre><span class="tk-c"># Claude Code</span>
+<span class="tk-g">cp</span> -r rationalism-design <span class="tk-b">~/.claude/skills/</span>
+
+<span class="tk-c"># Kimi Code (Windows)</span>
+<span class="tk-g">cp</span> -r rationalism-design <span class="tk-b">~/.kimi-code/skills/</span></pre>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">⚡ rationalism-design</div>
+  <p>MIT License © 2026 Shawn Qi · A personal collection of skills for AI coding agents</p>
+</footer>
+
+</body>
+</html>

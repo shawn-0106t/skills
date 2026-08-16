@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>rationalism-design</title>
+<style>
+  /*
+   * Design system: case-claude-code-rationalism
+   * Paper base #faf9f5 · terracotta accent family · sans only · radius 0/8/12/9999
+   * Accent roles declared: section-index bars, hero key phrase, primary CTA (hero only).
+   * Everything else stays neutral. Text sizes in rem (text-heavy page);
+   * hairlines, chips and focus rings stay px.
+   * Case-level brand decision (per discipline 3 and the Claude Code case file):
+   * micro-labels and spec data use mono — this product's engineering heritage.
+   */
+  :root {
+    --bg-primary: #faf9f5;
+    --bg-surface: #f5f4ed;
+    --bg-elevated: #ffffff;
+    --text-primary: #141413;
+    --text-secondary: #5e5d59;
+    --text-tertiary: #6f6e67;      /* darkened from #87867f to hold ≥4.5:1 on paper */
+    --accent-heroes: #c46849;      /* 3.7:1 on paper — large-text / graphical accent */
+    --accent-cta: #c6613f;         /* 4.1:1 vs white — passes 3:1 for ≥19px bold CTA text */
+    --border: #e8e6dc;
+    --border-hover: #d1cfc5;
+    --error: #b53333;
+    --focus: #2c84db;
+    --font-sans: "Microsoft YaHei", "PingFang SC", -apple-system, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "JetBrains Mono", "SF Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 100%; }
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;          /* 17px body-2 */
+    line-height: 1.6;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--focus);
+    border-radius: 8px;
+  }
+
+  .wrap { max-width: 68rem; margin: 0 auto; padding: 0 2rem; }
+
+  /* ---------- header ---------- */
+  header.site {
+    border-bottom: 1px solid var(--border);
+  }
+  .site-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1.25rem; padding-bottom: 1.25rem;
+  }
+  .wordmark { font-weight: 700; font-size: 1.0625rem; letter-spacing: -0.01em; text-decoration: none; }
+  nav.top { display: flex; align-items: center; gap: 2rem; }
+  nav.top a.link {
+    color: var(--text-secondary); text-decoration: none;
+    font-size: 0.9375rem; font-weight: 500;
+  }
+  nav.top a.link:hover { color: var(--text-primary); }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent-cta);
+    color: #fff;
+    border-radius: 9999px;
+    padding: 0.625rem 1.5rem;
+    font-size: 1.1875rem;          /* 19px bold — qualifies as large text for WCAG 3:1 */
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .btn-primary:hover { background: var(--accent-heroes); transform: scale(0.98); }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    padding: 0.625rem 1.5rem;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-secondary:hover { background: var(--bg-surface); border-color: var(--border-hover); }
+  /* Nav CTA is a neutral outline pill, not a second primary: the page's single
+     accent CTA lives in the hero. (A 15px white-on-terracotta nav button would
+     also fail WCAG — 4.05:1 < 4.5:1 for non-large text.) */
+  header.site .btn-secondary { font-size: 0.9375rem; padding: 0.5rem 1.25rem; }
+
+  /* ---------- hero ---------- */
+  .hero { padding-top: 8rem; padding-bottom: 4rem; }
+  .micro {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;          /* 11px */
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .hero h1 {
+    margin-top: 1.5rem;
+    font-size: clamp(2.125rem, 1.8rem + 1.6vw, 3.25rem);   /* display-1: 34→52 */
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    max-width: 22ch;
+  }
+  .hero h1 .key { color: var(--accent-heroes); }           /* declared role: hero key phrase */
+  .hero .lead {
+    margin-top: 2rem;
+    font-size: 1.375rem;           /* body-lg-1 ~22px */
+    line-height: 1.5;
+    color: var(--text-secondary);
+    max-width: 34rem;
+  }
+  .hero .actions { margin-top: 2.5rem; display: flex; gap: 1rem; align-items: center; }
+
+  /* signature: the page documents its own tokens */
+  .spec-strip {
+    margin-top: 4rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: flex; flex-wrap: wrap;
+  }
+  .spec-strip .cell {
+    padding: 0.875rem 1.5rem 0.875rem 0;
+    margin-right: 1.5rem;
+    border-right: 1px solid var(--border);
+    padding-right: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+  .spec-strip .cell:last-child { border-right: none; }
+  .spec-strip .cell b { color: var(--text-primary); font-weight: 600; }
+
+  /* ---------- sections ---------- */
+  section.block { padding-top: 8rem; }
+  .section-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 3rem; }
+  .section-head .bar {
+    width: 2rem; height: 3px; background: var(--accent-heroes);   /* declared role: section-index bar */
+    align-self: center; flex: none;
+  }
+  .section-head .idx {
+    font-family: var(--font-mono); font-size: 0.8125rem;
+    color: var(--text-primary); letter-spacing: 0.08em; flex: none;
+  }
+  .section-head h2 {
+    font-size: clamp(1.75rem, 1.6rem + 0.7vw, 2.25rem);   /* headline-3: 28→36 */
+    font-weight: 700; letter-spacing: -0.015em; line-height: 1.2;
+  }
+
+  /* ruled rows — disciplines & workflow share the drafting-table grammar */
+  .rows { border-top: 1px solid var(--border); }
+  .row {
+    display: grid;
+    grid-template-columns: 3rem 16rem 1fr;
+    gap: 2rem;
+    align-items: baseline;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .row .no {
+    font-family: var(--font-mono); font-size: 0.8125rem;
+    color: var(--text-tertiary); letter-spacing: 0.05em;
+  }
+  .row h3 { font-size: 1.1875rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
+  .row p { color: var(--text-secondary); font-size: 1rem; max-width: 60ch; }
+  .row p code, .case-card code {
+    font-family: var(--font-mono); font-size: 0.8125rem;
+    background: var(--bg-surface);
+    box-shadow: inset 0 0 0 1px var(--border);
+    border-radius: 8px;
+    padding: 0.1em 0.4em;
+  }
+
+  /* ---------- case library: the measured-token spec sheet ---------- */
+  .cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .case-card {
+    background: var(--bg-elevated);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: inset 0 0 0 1px var(--border);
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .case-card h3 { font-size: 1.1875rem; font-weight: 600; letter-spacing: -0.01em; }
+  .case-card .temper { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.5; }
+  .case-card .use {
+    font-family: var(--font-mono); font-size: 0.6875rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .swatches { display: flex; gap: 0.5rem; margin-top: auto; }
+  .swatch { flex: 1; }
+  .swatch .chip {
+    display: block;
+    height: 2.25rem; border-radius: 0;                       /* square = spec */
+    box-shadow: inset 0 0 0 1px var(--border);
+  }
+  .swatch .hex {
+    display: block; margin-top: 0.375rem;
+    font-family: var(--font-mono); font-size: 0.625rem;
+    letter-spacing: 0.04em; color: var(--text-secondary);
+  }
+
+  /* ---------- anti-patterns ---------- */
+  .bans { border-top: 1px solid var(--border); }
+  .ban {
+    display: grid; grid-template-columns: 2rem 1fr; gap: 1rem;
+    align-items: baseline;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .ban .x { color: var(--error); font-weight: 700; font-size: 1rem; }   /* semantic red, excepted */
+  .ban .name { font-weight: 600; text-decoration: line-through; text-decoration-thickness: 1px; }
+  .ban .note { color: var(--text-secondary); font-size: 0.9375rem; margin-left: 0.5rem; }
+
+  /* ---------- checklist ---------- */
+  .checks { border-top: 1px solid var(--border); }
+  .check {
+    display: grid; grid-template-columns: 1.25rem 1fr; gap: 1rem;
+    align-items: baseline;
+    padding: 1.125rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .check .box {
+    width: 0.875rem; height: 0.875rem;
+    box-shadow: inset 0 0 0 1px var(--text-primary);
+    border-radius: 0;
+    position: relative; top: 0.1rem;
+  }
+  .check .box::after {
+    content: ""; position: absolute; left: 0.1875rem; top: 0.0625rem;
+    width: 0.375rem; height: 0.625rem;
+    border-right: 2px solid var(--text-primary);
+    border-bottom: 2px solid var(--text-primary);
+    transform: rotate(40deg);
+  }
+  .check p { color: var(--text-secondary); font-size: 1rem; max-width: 68ch; }
+  .check p b { color: var(--text-primary); font-weight: 600; }
+
+  /* ---------- install ---------- */
+  .codeblock {
+    background: var(--bg-surface);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+    box-shadow: inset 0 0 0 1px var(--border), inset 0 0 3px rgba(0,0,0,0.04);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.9;
+    overflow-x: auto;
+  }
+  .codeblock .c { color: var(--text-secondary); }
+  .codeblock .p { color: var(--text-primary); }
+
+  /* ---------- footer ---------- */
+  footer.site {
+    margin-top: 8rem;
+    border-top: 1px solid var(--border);
+  }
+  footer.site .wrap {
+    padding-top: 2rem; padding-bottom: 2.5rem;
+    display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem;
+  }
+  footer.site p { color: var(--text-secondary); font-size: 0.875rem; }
+  footer.site .mono { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; }
+
+  /* No entrance animation: motion is one choreographed sequence or none at all.
+     This page chooses none — the order itself is the choreography. */
+
+  @media (max-width: 56rem) {
+    .cases { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 2.5rem 1fr; }
+    .row p { grid-column: 2; }
+    .hero { padding-top: 5rem; }
+    nav.top a.link { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap site-inner">
+    <a class="wordmark" href="#">rationalism-design</a>
+    <nav class="top">
+      <a class="link" href="#disciplines">Disciplines</a>
+      <a class="link" href="#workflow">Workflow</a>
+      <a class="link" href="#cases">Case library</a>
+      <a class="link" href="#install">Install</a>
+      <a class="btn-secondary" href="#install">Get the skill</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- Hero — one argument: modern is the inevitable form of the content -->
+  <section class="hero">
+    <p class="micro">A skill for Claude Code / Kimi Code agents</p>
+    <h1>Modern is not a fixed look. It is the <span class="key">inevitable form</span> of the specific content.</h1>
+    <p class="lead">A design playbook for building distinctive, engineering-rational web pages that reject the “AI default look”. Every page needs a reason why only it could look this way.</p>
+    <div class="actions">
+      <a class="btn-primary" href="#install">Install the skill</a>
+      <a class="btn-secondary" href="#disciplines">Read the disciplines</a>
+    </div>
+    <div class="spec-strip" aria-label="This page's own design tokens">
+      <span class="cell">This page is the exhibit</span>
+      <span class="cell">Base <b>#FAF9F5</b></span>
+      <span class="cell">Ink <b>#141413</b></span>
+      <span class="cell">Accent <b>#D97757</b></span>
+      <span class="cell">Radius <b>0 / 8 / 12 / 9999</b></span>
+      <span class="cell">Sans only</span>
+      <span class="cell">Zero dependencies</span>
+    </div>
+  </section>
+
+  <!-- 01 Disciplines -->
+  <section class="block" id="disciplines">
+    <div class="section-head">
+      <span class="bar" aria-hidden="true"></span><span class="idx">01</span>
+      <h2>Five core disciplines</h2>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <span class="no">1.1</span>
+        <h3>Signature from content</h3>
+        <p>The element a page is remembered for comes from the content itself — real data, real product UI, real process. Decoration either encodes information or gets deleted.</p>
+      </div>
+      <div class="row">
+        <span class="no">1.2</span>
+        <h3>One accent color</h3>
+        <p>Only one hue family gets to shout; everything else stays neutral. Spend the accent as text, hairlines and small marks — never as large fills. This page spends it on section-index bars, the hero key phrase, and the primary CTA. Nothing else.</p>
+      </div>
+      <div class="row">
+        <span class="no">1.3</span>
+        <h3>Type scale is personality</h3>
+        <p>Tight-tracked headlines against quiet micro-labels beat swapping fonts. Radius versus square corners is a brand decision — pick one and stay consistent site-wide.</p>
+      </div>
+      <div class="row">
+        <span class="no">1.4</span>
+        <h3>Subtract</h3>
+        <p>Ask of every element: what breaks if I delete it? The Chanel principle — take one accessory off before leaving the house.</p>
+      </div>
+      <div class="row">
+        <span class="no">1.5</span>
+        <h3>Semantic line-breaking for CJK</h3>
+        <p>Long Chinese headlines are broken into <code>inline-block</code> semantic chunks, so the browser only wraps between chunks — no orphan characters on their own line.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Workflow -->
+  <section class="block" id="workflow">
+    <div class="section-head">
+      <span class="bar" aria-hidden="true"></span><span class="idx">02</span>
+      <h2>A gated workflow — no code until the plan passes</h2>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <span class="no">2.1</span>
+        <h3>Confirm the style anchor</h3>
+        <p>The gating decision. It determines palette, type, layout and signature — get it wrong and the whole design system gets redone. This page is anchored on the Claude Code engineering-rationalism case.</p>
+      </div>
+      <div class="row">
+        <span class="no">2.2</span>
+        <h3>Distill, don’t skin-copy</h3>
+        <p>Reference sites are distilled into a design system — 4–6 named colors, type tiers, one layout concept, one signature — never copied pixel by pixel.</p>
+      </div>
+      <div class="row">
+        <span class="no">2.3</span>
+        <h3>Plan self-check</h3>
+        <p>Would this scheme still work for different content? If yes, it is a template — start over. No code until the plan survives the anti-pattern list line by line.</p>
+      </div>
+      <div class="row">
+        <span class="no">2.4</span>
+        <h3>Build with zero dependencies</h3>
+        <p>Single file. System sans first, tabular numerals, mono reserved for code and identifiers. One choreographed motion sequence, with a <code>prefers-reduced-motion</code> fallback.</p>
+      </div>
+      <div class="row">
+        <span class="no">2.5</span>
+        <h3>Screenshot self-check</h3>
+        <p>Never deliver blind. Headless Chrome screenshots, inspected with your own eyes — fix line-breaks, overflow and contrast, then re-shoot. This page passed the same check.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Case library — signature section: the measured-token spec sheet -->
+  <section class="block" id="cases">
+    <div class="section-head">
+      <span class="bar" aria-hidden="true"></span><span class="idx">03</span>
+      <h2>A case library, measured from real sites</h2>
+    </div>
+    <div class="cases">
+      <div class="case-card">
+        <h3>Claude Code rationalism</h3>
+        <p class="temper">Paper base, terracotta accent, four radius states. Material honesty as the style itself.</p>
+        <p class="use">Tool interfaces · dashboards · product pages</p>
+        <div class="swatches">
+          <span class="swatch"><span class="chip" style="background:#faf9f5"></span><span class="hex">#FAF9F5</span></span>
+          <span class="swatch"><span class="chip" style="background:#141413"></span><span class="hex">#141413</span></span>
+          <span class="swatch"><span class="chip" style="background:#d97757"></span><span class="hex">#D97757</span></span>
+          <span class="swatch"><span class="chip" style="background:#e8e6dc"></span><span class="hex">#E8E6DC</span></span>
+        </div>
+      </div>
+      <div class="case-card">
+        <h3>Porsche dark performance-spec</h3>
+        <p class="temper">Zero radius, zero shadow, hairline seams. The red stays under 5% of the page.</p>
+        <p class="use">Data-dense pages · benchmarks · luxury</p>
+        <div class="swatches">
+          <span class="swatch"><span class="chip" style="background:#0b0b0b"></span><span class="hex">#0B0B0B</span></span>
+          <span class="swatch"><span class="chip" style="background:#d8d8d8"></span><span class="hex">#D8D8D8</span></span>
+          <span class="swatch"><span class="chip" style="background:#d5001c"></span><span class="hex">#D5001C</span></span>
+          <span class="swatch"><span class="chip" style="background:#1a1a1a"></span><span class="hex">#1A1A1A</span></span>
+        </div>
+      </div>
+      <div class="case-card">
+        <h3>Kimi platform mono docs</h3>
+        <p class="temper">Black is the only accent; every interactive signal is a lightness shift, never a hue.</p>
+        <p class="use">API docs · dev reference · spec sheets</p>
+        <div class="swatches">
+          <span class="swatch"><span class="chip" style="background:#111111"></span><span class="hex">#111111</span></span>
+          <span class="swatch"><span class="chip" style="background:#5f5f68"></span><span class="hex">#5F5F68</span></span>
+          <span class="swatch"><span class="chip" style="background:#e5e7eb"></span><span class="hex">#E5E7EB</span></span>
+          <span class="swatch"><span class="chip" style="background:#f5f5f5"></span><span class="hex">#F5F5F5</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Anti-patterns -->
+  <section class="block" id="bans">
+    <div class="section-head">
+      <span class="bar" aria-hidden="true"></span><span class="idx">04</span>
+      <h2>The AI-default reject list</h2>
+    </div>
+    <div class="bans">
+      <div class="ban"><span class="x" aria-hidden="true">✕</span><p><span class="name">Cream base + serif display + terracotta</span><span class="note">— the editorial-magazine skin. Answering “modern” with this is answering the wrong question.</span></p></div>
+      <div class="ban"><span class="x" aria-hidden="true">✕</span><p><span class="name">Near-black base + neon-green accent</span><span class="note">— the hacker/acid skin. Overused.</span></p></div>
+      <div class="ban"><span class="x" aria-hidden="true">✕</span><p><span class="name">Newspaper hairlines + dense multi-column</span><span class="note">— the broadsheet skin. Also overused.</span></p></div>
+      <div class="ban"><span class="x" aria-hidden="true">✕</span><p><span class="name">Deep-space base + blue-violet glow + glass cards</span><span class="note">— the 2021 “AI-generated” standard kit, now the most dated signal there is.</span></p></div>
+      <div class="ban"><span class="x" aria-hidden="true">✕</span><p><span class="name">Generic SaaS card grid</span><span class="note">— gray base, white cards, left gradient bar, chip badges. Swap the content and it still works: that is what template means.</span></p></div>
+      <div class="ban"><span class="x" aria-hidden="true">✕</span><p><span class="name">Decoration unrelated to content</span><span class="note">— mosaics, particles, wave SVGs that are only “pretty”.</span></p></div>
+    </div>
+  </section>
+
+  <!-- 05 Checklist -->
+  <section class="block" id="checklist">
+    <div class="section-head">
+      <span class="bar" aria-hidden="true"></span><span class="idx">05</span>
+      <h2>Walked before every delivery</h2>
+    </div>
+    <div class="checks">
+      <div class="check"><span class="box" aria-hidden="true"></span><p><b>Content truthfulness.</b> Every numeral matches the source data; multiples and percentages survive arithmetic.</p></div>
+      <div class="check"><span class="box" aria-hidden="true"></span><p><b>One accent.</b> Every usage matches a role declared in the design plan; no large-area fills.</p></div>
+      <div class="check"><span class="box" aria-hidden="true"></span><p><b>Zero external dependencies.</b> No web fonts, CDN images or icon libraries; numerals in tabular figures.</p></div>
+      <div class="check"><span class="box" aria-hidden="true"></span><p><b>Contrast and states.</b> Body text ≥ 4.5:1, large text ≥ 3:1; focus ring ≥ 2px at ≥ 3:1; disabled, loading, empty and error states built, not forgotten.</p></div>
+      <div class="check"><span class="box" aria-hidden="true"></span><p><b>Verified with screenshots.</b> Headless Chrome — first screen, full length, narrow viewport — inspected with your own eyes.</p></div>
+    </div>
+  </section>
+
+  <!-- 06 Install -->
+  <section class="block" id="install">
+    <div class="section-head">
+      <span class="bar" aria-hidden="true"></span><span class="idx">06</span>
+      <h2>Install</h2>
+    </div>
+    <div class="codeblock">
+      <span class="c"># Claude Code</span><br>
+      <span class="p">cp -r rationalism-design ~/.claude/skills/</span><br>
+      <br>
+      <span class="c"># Kimi Code (Windows)</span><br>
+      <span class="p">cp -r rationalism-design ~/.kimi-code/skills/</span>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>rationalism-design — a skill in the <a href="https://github.com/shawn-0106t/skills">shawn-0106t/skills</a> collection.</p>
+    <p class="mono">MIT © 2026 SHAWN QI</p>
+  </div>
+</footer>
+
+</body>
+</html>

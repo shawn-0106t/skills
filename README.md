@@ -31,6 +31,14 @@ Scope: this is a single-page aesthetics playbook. Multi-page products additional
 information architecture, navigation patterns, and full component-state coverage — for those,
 defer to platform design systems (Material 3, Fluent 2).
 
+### Demo
+
+Same content, same machine — the only variable is whether the skill is active:
+
+![The same README content as a web page: default agent output (left) vs. with rationalism-design (right)](demo/before-after.png)
+
+Page sources and full-length screenshots live in [`demo/`](demo/).
+
 ### What it provides
 
 - **Five core disciplines** — signature elements derived from the content itself, one accent
