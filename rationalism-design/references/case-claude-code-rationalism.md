@@ -84,6 +84,8 @@ Line-height: tighter 1.1 (display only) / snug 1.2 (headlines) / normal 1.3 (sub
 ## Spacing
 **Use px, not rem** — tool interfaces demand pixel precision.
 
+Exception for text-heavy pages (reports, long-form, landing pages): font sizes may use rem so user browser-zoom settings are respected; borders, 1px hairlines, and icon grids stay in px (they don't need to scale). This case's own tool/dashboard surfaces keep px throughout.
+
 Ramp: 2 / 4 / 6 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 / 56 / 64 / 80 / 96 / 128 / 200px.
 
 - Inside components: tight (8px–24px)

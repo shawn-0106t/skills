@@ -7,6 +7,8 @@ description: Design playbook for building distinctive, engineering-rational web 
 
 Build web pages with a brand voice and no AI-default feel. Core belief: **modern is not one fixed look — it is the inevitable form of this specific content**. Every page needs a reason why only it could look this way.
 
+Scope: this is a single-page aesthetics playbook. Multi-page products additionally need information architecture, navigation patterns, page templates, and full component-state coverage — for those, defer to platform design systems (Material 3, Fluent 2); they are out of scope here.
+
 ## Five Core Disciplines
 
 1. **The signature element comes from the content itself.** Real data, real product UI, real process — not decorative graphics. Example: a verification log turned "fixed 134 cells" into a 134-cell pixel mosaic; a product page used a real terminal session as the hero. Decoration either encodes information or gets deleted.
@@ -51,6 +53,7 @@ Write a compact plan (color / type / layout / signature), then check it line by 
 
 - Single file, zero external dependencies (no web fonts, no external images, no JS libraries)
 - Fonts: system sans first (`system-ui` stack); numerals get `font-variant-numeric: tabular-nums` inside the body font instead of a font switch; mono is reserved for code, raw identifiers, logs, and terminal excerpts — unless the user asks otherwise
+- Units: px for tool/dashboard interfaces (pixel precision); on text-heavy report/long-form/landing pages, font sizes use rem so user zoom settings are respected — borders, 1px hairlines, and icon grids stay px either way
 - Motion: one choreographed sequence only (entrance OR scroll-triggered), with a `prefers-reduced-motion` fallback
 - Bilingual pages: dual content blocks + a toggle function, default to the user's primary language, clear button states
 
@@ -64,7 +67,7 @@ Never deliver blind. Screenshot with headless Chrome and inspect with your own e
   --screenshot="<tmp>.png" "file:///<page-path>"
 ```
 
-`--virtual-time-budget` lets entrance animations finish — without it you will misjudge elements as missing. Fix line-breaks, overflow, and contrast issues, then re-shoot. Delete verification screenshots after use.
+`--virtual-time-budget` lets entrance animations finish — without it you will misjudge elements as missing. Fix line-breaks, overflow, and contrast (≥4.5:1 body / ≥3:1 large text, see `references/checklist.md`), then re-shoot. Delete verification screenshots after use.
 
 ### 6. Before delivery
 
