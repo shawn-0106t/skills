@@ -27,6 +27,10 @@ Every page needs a reason why only it could look that way.
 Use it when a page looks "too generic / too templated / too AI-flavored", or when building or
 redesigning an HTML page, report, dashboard, landing page, or data-driven page.
 
+Scope: this is a single-page aesthetics playbook. Multi-page products additionally need
+information architecture, navigation patterns, and full component-state coverage — for those,
+defer to platform design systems (Material 3, Fluent 2).
+
 ### What it provides
 
 - **Five core disciplines** — signature elements derived from the content itself, one accent
@@ -46,7 +50,8 @@ redesigning an HTML page, report, dashboard, landing page, or data-driven page.
 - **An AI-default anti-pattern list** — the template skins and lazy patterns that get a design
   plan rejected, checked line by line before building.
 - **A pre-delivery checklist** — content truthfulness, design discipline, engineering quality,
-  and mandatory headless-Chrome screenshot verification.
+  contrast and interactive states (WCAG 2.2 AA contrast spot-checks, focus rings, disabled and
+  loading/empty/error states), and mandatory headless-Chrome screenshot verification.
 
 ### Structure
 
