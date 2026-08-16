@@ -187,6 +187,15 @@ Buttons (primary pill orange / secondary pill outline / tertiary square text-onl
 }
 ```
 
+**Contrast note on the measured primary button.** The measured `.btn-primary` (17px/500 white on `#d97757`) sits at ≈3.1:1 — below WCAG AA's 4.5:1 for non-large text. These hex values are faithful measurements of the live site; they are not automatically safe to ship. When using this button, pick one:
+
+- Bump to ≥19px bold (qualifies as large text → 3:1 required, passes), or
+- Darken the fill one step to `#c6613f` (accent-hover) with ≥19px bold text, or
+- For 15–17px text, darken further (≈`#b8552f`, ~4.8:1 vs white) or use a neutral `.btn-secondary`, or
+- Declare it a conscious brand exception in the design plan.
+
+Never put small (≤17px) white text on `#d97757` and call it AA.
+
 Input (etched inset):
 
 ```css

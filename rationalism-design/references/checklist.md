@@ -34,5 +34,6 @@ Walk every item. Any failure means go back and fix it.
 
 ## Verification
 - [ ] Headless Chrome screenshots (`--virtual-time-budget=5000` so animations finish) inspected with your own eyes: first screen, full-length page, narrow viewport
+- [ ] Animations are progressive enhancement: if the animation never runs (headless capture, reduced-motion, no-JS), every element is still fully visible — entrance animations with `fill: both` that freeze content at `opacity: 0` fail this check
 - [ ] Narrow-viewport screenshots: headless Chrome enforces a minimum layout width (~534px measured via a `window.innerWidth` probe page) regardless of `--window-size`; below that, the screenshot is a CROP of a wider layout and mimics horizontal overflow. Probe `innerWidth` before "fixing" CSS; treat ~534px as the narrowest testable width
 - [ ] Temporary screenshots / preview files deleted
