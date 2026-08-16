@@ -12,13 +12,14 @@ Check every design plan against this list, line by line. None of these patterns 
 5. **Generic SaaS card grid**: light-gray base + white cards + left gradient bar + icon squares + chip badges. Swap the content and it still works = template. Modern ≠ stacking this component kit.
 6. **4px semantic color bar on card left edge**: when the icon and label already carry the semantics, the bar is the extra accessory — and it clashes with a soft-radius system.
 7. **Decoration unrelated to content**: mosaics, particles, wave SVGs that are only "pretty". The signature element must come from the content itself.
+8. **Imported component skin**: another product's nav chrome or widget look pasted into the page — even when measured pixel-perfectly, it reads as foreign. Distill the interaction (geometry, motion, state machine); regrow the skin from the host page's own grammar.
 
 ## Copy and detail anti-patterns
-8. **Order-of-magnitude bragging**: writing 25× as "two orders of magnitude" (25× ≈ 1.4 orders). Data copy must survive arithmetic.
-9. **CJK orphan characters**: a long Chinese headline wraps leaving a lone "来，" on its own line. Prevent with inline-block semantic chunks.
-10. **Motion as atmosphere crew**: every element floating/glowing/pulsing. Modern motion is one choreographed sequence with an order — or none at all.
-11. **External dependencies**: Google Fonts, CDN images, online icon libraries. Deliverables should have zero external dependencies (unless the brief allows); use system font stacks.
-12. **Forgetting reduced-motion**: any motion must ship with a `prefers-reduced-motion` fallback.
+9. **Order-of-magnitude bragging**: writing 25× as "two orders of magnitude" (25× ≈ 1.4 orders). Data copy must survive arithmetic.
+10. **CJK orphan characters**: a long Chinese headline wraps leaving a lone "来，" on its own line. Prevent with inline-block semantic chunks.
+11. **Motion as atmosphere crew**: every element floating/glowing/pulsing. Modern motion is one choreographed sequence with an order — or none at all.
+12. **External dependencies**: Google Fonts, CDN images, online icon libraries. Deliverables should have zero external dependencies (unless the brief allows); use system font stacks.
+13. **Forgetting reduced-motion**: any motion must ship with a `prefers-reduced-motion` fallback.
 
 ## Self-Check Questions
 - Would this scheme still work for a different topic? Yes → it's a template, start over.

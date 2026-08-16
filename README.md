@@ -72,6 +72,7 @@ rationalism-design/
     ├── case-kimi-platform-mono-docs.md         # monochrome docs design system
     ├── chart-colors.md                         # chart color grammar
     ├── icons.md                                # icon discipline
+    ├── nav-section-rail.md                     # section rail navigation: interaction skeleton + host-derived skin
     ├── anti-patterns.md                        # AI-default patterns to reject
     └── checklist.md                            # pre-delivery checklist
 ```

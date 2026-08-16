@@ -57,7 +57,7 @@ Dark (optional):
 - CJK: YaHei (Win) / PingFang (macOS) / Noto Sans SC (web fallback); Latin: -apple-system / SF Pro / Inter
 - All numerals must use tabular figures (tnum)
 
-Note: mono for code/data/terminal feel is this product's engineering heritage — a case-level exception to the general mono default; outside this case, numerals use tabular-nums in the body font.
+Note: mono for code/data/terminal feel is this product's engineering heritage — a case-level exception to the general mono default; outside this case, numerals use tabular-nums in the body font. The exception covers code, raw identifiers, and data only: labels, micro-labels, and UI text default to sans even inside this case.
 
 Scale (body tiers fixed px, display tiers fluid clamp):
 

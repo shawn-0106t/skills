@@ -67,6 +67,7 @@ rationalism-design/
     ├── case-kimi-platform-mono-docs.md         # 黑白文档风设计体系
     ├── chart-colors.md                         # 图表配色语法
     ├── icons.md                                # 图标纪律
+    ├── nav-section-rail.md                     # 章节边栏导航：交互骨架测量 + 宿主页面皮肤
     ├── anti-patterns.md                        # 需要拒绝的 AI 默认模式
     └── checklist.md                            # 交付前检查清单
 ```

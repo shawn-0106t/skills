@@ -54,7 +54,7 @@ Write a compact plan (color / type / layout / signature), then check it line by 
 - Single file, zero external dependencies (no web fonts, no external images, no JS libraries)
 - Fonts: system sans first (`system-ui` stack); numerals get `font-variant-numeric: tabular-nums` inside the body font instead of a font switch; mono is reserved for code, raw identifiers, logs, and terminal excerpts — unless the user asks otherwise
 - Units: px for tool/dashboard interfaces (pixel precision); on text-heavy report/long-form/landing pages, font sizes use rem so user zoom settings are respected — borders, 1px hairlines, and icon grids stay px either way
-- Motion: one choreographed sequence only (entrance OR scroll-triggered), with a `prefers-reduced-motion` fallback
+- Motion: one choreographed sequence only (entrance OR scroll-triggered), with a `prefers-reduced-motion` fallback. Functional scroll behavior (`scroll-behavior: smooth` for anchor jumps) does not count as the choreographed sequence — it is allowed on top, with the same reduced-motion fallback
 - Bilingual pages: dual content blocks + a toggle function, default to the user's primary language, clear button states
 
 ### 5. Screenshot self-check (mandatory)
@@ -82,5 +82,6 @@ Walk `references/checklist.md`.
 | Monochrome engineering docs (platform.kimi.com) | API/developer docs, spec sheets, technical reference; black-as-accent, neutral shadows, code-as-hero | `references/case-kimi-platform-mono-docs.md` |
 | Chart color grammar | Any page with charts or data visualization | `references/chart-colors.md` |
 | Icon discipline | Any page that uses icons | `references/icons.md` |
+| Section rail navigation | Long single-page docs (≥4 anchored sections) needing edge wayfinding — interaction skeleton measured from kimi.com, skin regrown from the host page | `references/nav-section-rail.md` |
 | AI-default anti-patterns | Every design-plan self-check | `references/anti-patterns.md` |
 | Pre-delivery checklist | Every delivery | `references/checklist.md` |

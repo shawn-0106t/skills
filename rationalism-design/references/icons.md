@@ -15,6 +15,9 @@ language toggles, and similar actions. Everything else (feature highlights, sect
 
 - Inline SVG only. No icon fonts, no external libraries, no CDN links, no fetched assets —
   the zero-dependency rule applies to icons too.
+- State glyphs (checkboxes, status dots, disclosure marks) follow the same rules. Never fake
+  them with box-shadow insets, border tricks, or rotated pseudo-elements — those render fuzzy
+  and misaligned; draw the SVG.
 - Do not redraw from memory of Lucide / Material / FontAwesome shapes; if you cannot construct
   a clean original glyph, use a text label instead.
 - Emoji are not UI icons.

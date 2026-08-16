@@ -14,6 +14,7 @@ Walk every item. Any failure means go back and fix it.
 - [ ] Every decorative element has a stated information payload; everything you couldn't justify is deleted
 - [ ] Charts follow `chart-colors.md`: sequential by default, ≤5 categorical hues, no red+green pairing, grayscale-distinguishable
 - [ ] Icons are functional only: 24×24 grid, currentColor, ≤24px, inline SVG; decorative icons still banned
+- [ ] Mixed-size rows (index bar + numeral + headline) share one optical center axis (e.g. `align-items: center`) — no baseline/self-override mixing
 
 ## Engineering Quality
 - [ ] Zero external dependencies (no web fonts / images / CDN); system sans first; numerals tabular-nums; mono only for code/identifiers/logs (or a documented case-level exception)
