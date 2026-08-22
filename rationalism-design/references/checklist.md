@@ -9,6 +9,7 @@ Walk every item. Any failure means go back and fix it.
 
 ## Design Discipline
 - [ ] Single accent color (semantic green/red excepted); every usage matches a role declared in the design plan; no large-area fills (backgrounds only as 10–25% tints)
+- [ ] Design plan declares the functional/expressive color boundary (if an expressive family exists) and each font's semantic role (see `case-kimi-brand-visual-infra.md`)
 - [ ] Radius strategy consistent site-wide (all-rounded or all-square)
 - [ ] Checked against `anti-patterns.md`: the three default skins + rejected patterns, none triggered
 - [ ] Every decorative element has a stated information payload; everything you couldn't justify is deleted

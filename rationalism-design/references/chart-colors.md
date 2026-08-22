@@ -4,6 +4,12 @@ Color in a chart explains data — it is not decoration, and it is exempt from t
 single-accent discipline. But exemption is not freedom: an undisciplined chart palette reads as
 template work. The rules below keep chart color as deliberate as everything else on the page.
 
+## Honesty first
+
+A data visualization first and foremost has to accurately convey the data — it must not mislead
+or distort (Kimi brand book principle). Minimalism and reduction are means to that end, not a
+style: delete what obscures the data before you delete what merely looks plain.
+
 ## Brand coherence
 
 Derive sequential scales from the page's accent hue family — opacity or lightness steps of the
