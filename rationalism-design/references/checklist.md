@@ -9,12 +9,11 @@ Walk every item. Any failure means go back and fix it.
 
 ## Design Discipline
 - [ ] Single accent color (semantic green/red excepted); every usage matches a role declared in the design plan; no large-area fills (backgrounds only as 10–25% tints)
-- [ ] Design plan declares the functional/expressive color boundary (if an expressive family exists) and each font's semantic role (see `case-kimi-brand-visual-infra.md`)
 - [ ] Radius strategy consistent site-wide (all-rounded or all-square)
 - [ ] Checked against `anti-patterns.md`: the three default skins + rejected patterns, none triggered
 - [ ] Every decorative element has a stated information payload; everything you couldn't justify is deleted
 - [ ] Charts follow `chart-colors.md`: sequential by default, ≤5 categorical hues, no red+green pairing, grayscale-distinguishable
-- [ ] Icons are functional only: 24×24 grid, currentColor, ≤24px, inline SVG; decorative icons still banned
+- [ ] Icons follow `icons.md`: four measured tiers (controls / wayfinding / identity marks / restrained pictograms), one consistent grid per family (16/20/24), UI glyphs `currentColor`, ≤24px, inline SVG; decorative filler icons still banned
 - [ ] Mixed-size rows (index bar + numeral + headline) share one optical center axis (e.g. `align-items: center`) — no baseline/self-override mixing
 
 ## Engineering Quality
@@ -30,7 +29,7 @@ Walk every item. Any failure means go back and fix it.
 - [ ] Non-text elements: focus indicators and control boundaries ≥ 3:1 (SC 1.4.11)
 - [ ] Spot-checked at least 3 places (body text, muted text, accent text) via Chrome DevTools → color picker, which shows the ratio and AA/AAA pass/fail directly
 - [ ] Exempt: purely decorative text, logotypes, disabled components
-- [ ] Every interactive element has visible hover and focus states; focus ring ≥2px with ≥3:1 contrast against the background (Claude measured: `0 0 0 2px #2c84db`)
+- [ ] Every interactive element has visible hover and focus states; focus indicator ≥2px with ≥3:1 contrast against the background (live claude.com measured: `outline: 2px solid #c46849`, offset 4px on product pages; `#c96442`, offset 2px on brand pages)
 - [ ] Disabled state: alpha fade-out (text-muted color, alpha ≤50%; Material 3: 38% foreground) — exempt from contrast thresholds, but no hover effect and a non-color cue it is inert (e.g. `cursor: not-allowed`)
 - [ ] Conditional states where applicable: async data → loading and error states; data-driven page → empty state. Missing means go back and build them
 

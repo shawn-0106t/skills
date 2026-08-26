@@ -53,8 +53,11 @@ Page sources and full-length screenshots live in [`demo/`](demo/).
   | Claude Code engineering rationalism | paper base, terracotta accent, four radius states | tool interfaces, dashboards, technical product pages |
   | porsche.cn dark performance-spec | zero radius, zero shadow, hairline seams, red ≤5% | data-dense pages, benchmarks, luxury feel |
   | Kimi platform docs monochrome | black-as-accent, neutral shadows, code-as-hero | API/developer docs, technical reference pages |
+  | Kimi brand visual infra | two-tier color, fonts-by-role, dual grid, De-coding texture | brand pages, launch pages, marketing pages |
 - **Cross-cutting grammars** — chart color grammar (sequential by default, ≤5 categorical
-  hues, colorblind-safe) and icon discipline (functional inline SVG only, 24×24 grid, `currentColor`).
+  hues, colorblind-safe) and icon discipline (four measured tiers: controls / wayfinding /
+  identity marks / restrained pictograms; inline SVG, one consistent grid per family,
+  `currentColor`), backed by a bundled 105-glyph fill-style icon library.
 - **An AI-default anti-pattern list** — the template skins and lazy patterns that get a design
   plan rejected, checked line by line before building.
 - **A pre-delivery checklist** — content truthfulness, design discipline, engineering quality,
@@ -66,15 +69,18 @@ Page sources and full-length screenshots live in [`demo/`](demo/).
 ```
 rationalism-design/
 ├── SKILL.md                                    # entry point: disciplines + workflow
-└── references/
-    ├── case-claude-code-rationalism.md         # full design system: colors, type, spacing, components
-    ├── case-porsche-dark-spec.md               # dark spec-sheet design system
-    ├── case-kimi-platform-mono-docs.md         # monochrome docs design system
-    ├── chart-colors.md                         # chart color grammar
-    ├── icons.md                                # icon discipline
-    ├── nav-section-rail.md                     # section rail navigation: interaction skeleton + host-derived skin
-    ├── anti-patterns.md                        # AI-default patterns to reject
-    └── checklist.md                            # pre-delivery checklist
+├── references/
+│   ├── case-claude-code-rationalism.md         # full design system: colors, type, spacing, components
+│   ├── case-porsche-dark-spec.md               # dark spec-sheet design system
+│   ├── case-kimi-platform-mono-docs.md         # monochrome docs design system
+│   ├── case-kimi-brand-visual-infra.md         # Kimi brand system: two-tier color, fonts-by-role, dual grid
+│   ├── chart-colors.md                         # chart color grammar
+│   ├── icons.md                                # icon discipline
+│   ├── nav-section-rail.md                     # section rail navigation: interaction skeleton + host-derived skin
+│   ├── anti-patterns.md                        # AI-default patterns to reject
+│   └── checklist.md                            # pre-delivery checklist
+└── assets/
+    └── icons/                                  # 105-glyph fill-style icon library (24×24, currentColor) + index
 ```
 
 ## Installation

@@ -49,8 +49,10 @@
   | Claude Code 工程理性风 | 纸感底色、陶土橙强调色、仅四种圆角 | 工具界面、dashboard、技术产品页 |
   | 保时捷暗黑性能风 | 零圆角零阴影、发丝线分格、红色占比 ≤5% | 数据密集页、跑分/性能报告、高级感 |
   | Kimi 开放平台文档黑白风 | 黑即强调色、中性阴影、代码即 hero | API/开发者文档、技术参考页 |
+  | Kimi 品牌视觉基建 | 双层色彩、按语义角色分配字体、双层网格、De-coding 纹理 | 品牌页、发布页、市场传播页 |
 - **横向规范** —— 图表配色语法（默认顺序色阶、分类色 ≤5 种、色盲安全）和图标纪律
-  （仅功能性内联 SVG、24×24 网格、`currentColor`）。
+  （四个实测层级：控件 / 导航标记 / 标识 logo / 克制象形；内联 SVG、同一族内统一网格、
+  `currentColor`），并内置一套 105 枚填充式图标库。
 - **AI 默认反模式清单** —— 会导致设计方案被打回的模板化套路，构建前逐行对照检查。
 - **交付前检查清单** —— 内容真实性、设计纪律、工程质量、对比度与交互状态（WCAG 2.2 AA
   对比度抽查、focus 环、disabled 及 loading/empty/error 状态），以及强制的 headless Chrome
@@ -61,15 +63,18 @@
 ```
 rationalism-design/
 ├── SKILL.md                                    # 入口：设计纪律 + 工作流
-└── references/
-    ├── case-claude-code-rationalism.md         # 完整设计体系：配色、字体、间距、组件
-    ├── case-porsche-dark-spec.md               # 暗黑性能风格设计体系
-    ├── case-kimi-platform-mono-docs.md         # 黑白文档风设计体系
-    ├── chart-colors.md                         # 图表配色语法
-    ├── icons.md                                # 图标纪律
-    ├── nav-section-rail.md                     # 章节边栏导航：交互骨架测量 + 宿主页面皮肤
-    ├── anti-patterns.md                        # 需要拒绝的 AI 默认模式
-    └── checklist.md                            # 交付前检查清单
+├── references/
+│   ├── case-claude-code-rationalism.md         # 完整设计体系：配色、字体、间距、组件
+│   ├── case-porsche-dark-spec.md               # 暗黑性能风格设计体系
+│   ├── case-kimi-platform-mono-docs.md         # 黑白文档风设计体系
+│   ├── case-kimi-brand-visual-infra.md         # Kimi 品牌体系：双层色彩、按角色分配字体、双层网格
+│   ├── chart-colors.md                         # 图表配色语法
+│   ├── icons.md                                # 图标纪律
+│   ├── nav-section-rail.md                     # 章节边栏导航：交互骨架测量 + 宿主页面皮肤
+│   ├── anti-patterns.md                        # 需要拒绝的 AI 默认模式
+│   └── checklist.md                            # 交付前检查清单
+└── assets/
+    └── icons/                                  # 105 枚填充式图标库（24×24、currentColor）+ 索引
 ```
 
 ## 安装
