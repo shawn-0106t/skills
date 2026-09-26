@@ -9,8 +9,9 @@
 ## 简介
 
 本仓库中的每个 skill 都是一个自包含目录，遵循 Agent Skills 格式：以 `SKILL.md` 为入口
-（YAML frontmatter + 指令），可选配一个 `references/` 文件夹存放提炼的案例文档和检查清单。
-把 skill 文件夹放进 agent 的 skills 目录，即可被 agent 自动识别和调用。
+（YAML frontmatter + 指令），可选配 `references/`（提炼的案例文档和检查清单）与
+`scripts/`（辅助脚本）文件夹。把 skill 文件夹放进 agent 的 skills 目录，即可被 agent
+自动识别和调用。
 
 ## Skill 列表
 
@@ -55,14 +56,17 @@
   `currentColor`），并内置一套 105 枚填充式图标库。
 - **AI 默认反模式清单** —— 会导致设计方案被打回的模板化套路，构建前逐行对照检查。
 - **交付前检查清单** —— 内容真实性、设计纪律、工程质量、对比度与交互状态（WCAG 2.2 AA
-  对比度抽查、focus 环、disabled 及 loading/empty/error 状态），以及强制的 headless Chrome
-  截图验证。
+  对比度抽查、focus 环、disabled 及 loading/empty/error 状态），以及强制的无头浏览器截图
+  验证（内置 `scripts/headless-shot.sh`，自动探测 Chrome / Edge / Chromium / Brave /
+  Vivaldi / Opera，Firefox 兜底）。
 
 ### 目录结构
 
 ```
 rationalism-design/
 ├── SKILL.md                                    # 入口：设计纪律 + 工作流
+├── scripts/
+│   └── headless-shot.sh                        # 无头浏览器截图脚本，用于交付前验证
 ├── references/
 │   ├── case-claude-code-rationalism.md         # 完整设计体系：配色、字体、间距、组件
 │   ├── case-porsche-dark-spec.md               # 暗黑性能风格设计体系

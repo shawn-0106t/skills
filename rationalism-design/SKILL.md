@@ -60,15 +60,13 @@ Write a compact plan (color / type / layout / signature), then check it line by 
 
 ### 5. Screenshot self-check (mandatory)
 
-Never deliver blind. Screenshot with headless Chrome and inspect with your own eyes:
+Never deliver blind. Screenshot with a headless browser and inspect with your own eyes, via the bundled `scripts/headless-shot.sh` (path relative to this skill's directory):
 
 ```bash
-"/c/Program Files/Google/Chrome/Application/chrome.exe" --headless --disable-gpu \
-  --window-size=1280,<page-height> --virtual-time-budget=5000 \
-  --screenshot="<tmp>.png" "file:///<page-path>"
+bash <skill-dir>/scripts/headless-shot.sh <page.html> <tmp>.png 1280 <page-height>
 ```
 
-`--virtual-time-budget` lets entrance animations finish — without it you will misjudge elements as missing. Fix line-breaks, overflow, and contrast (≥4.5:1 body / ≥3:1 large text, see `references/checklist.md`), then re-shoot. Delete verification screenshots after use.
+The script auto-detects Chrome / Edge / Chromium / Brave / Vivaldi / Opera on Windows, macOS, and Linux, falls back to Firefox, and — when no browser exists at all — fails loudly with the list of searched paths. Never skip the self-check silently because "Chrome is not installed"; if the script reports nothing found, say so to the user instead of shipping unverified. On Chromium it passes `--virtual-time-budget=5000`, which lets entrance animations finish — without it you will misjudge elements as missing (Firefox has no equivalent; before "fixing" a seemingly absent element, rule out a mid-animation capture). Shoot at least three views: first screen (~800px tall), full-length page, and narrow viewport. Fix line-breaks, overflow, and contrast (≥4.5:1 body / ≥3:1 large text, see `references/checklist.md`), then re-shoot. Delete verification screenshots after use.
 
 ### 6. Before delivery
 

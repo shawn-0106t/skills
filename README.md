@@ -9,8 +9,9 @@ A personal collection of skills for AI coding agents (Claude Code / Kimi Code an
 ## About
 
 Each skill in this repository is a self-contained directory following the Agent Skills format:
-a `SKILL.md` entry point (YAML frontmatter + instructions), optionally backed by a
-`references/` folder with distilled case files and checklists. Drop a skill folder into your
+a `SKILL.md` entry point (YAML frontmatter + instructions), optionally backed by
+`references/` (distilled case files and checklists) and `scripts/` (helper scripts) folders.
+Drop a skill folder into your
 agent's skills directory and it becomes available to the agent automatically.
 
 ## Skills
@@ -62,13 +63,17 @@ Page sources and full-length screenshots live in [`demo/`](demo/).
   plan rejected, checked line by line before building.
 - **A pre-delivery checklist** — content truthfulness, design discipline, engineering quality,
   contrast and interactive states (WCAG 2.2 AA contrast spot-checks, focus rings, disabled and
-  loading/empty/error states), and mandatory headless-Chrome screenshot verification.
+  loading/empty/error states), and mandatory screenshot verification via the bundled
+  headless-browser script (`scripts/headless-shot.sh` auto-detects Chrome / Edge / Chromium /
+  Brave / Vivaldi / Opera, with Firefox fallback).
 
 ### Structure
 
 ```
 rationalism-design/
 ├── SKILL.md                                    # entry point: disciplines + workflow
+├── scripts/
+│   └── headless-shot.sh                        # headless-browser screenshot helper for delivery verification
 ├── references/
 │   ├── case-claude-code-rationalism.md         # full design system: colors, type, spacing, components
 │   ├── case-porsche-dark-spec.md               # dark spec-sheet design system

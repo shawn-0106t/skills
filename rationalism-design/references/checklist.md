@@ -27,14 +27,14 @@ Walk every item. Any failure means go back and fix it.
 ## Contrast & States
 - [ ] Body text vs background ≥ 4.5:1 (WCAG 2.2 SC 1.4.3 AA); large text (≥24px, or ≥18.66px bold) ≥ 3:1
 - [ ] Non-text elements: focus indicators and control boundaries ≥ 3:1 (SC 1.4.11)
-- [ ] Spot-checked at least 3 places (body text, muted text, accent text) via Chrome DevTools → color picker, which shows the ratio and AA/AAA pass/fail directly
+- [ ] Spot-checked at least 3 places (body text, muted text, accent text) via the browser DevTools color picker (Chrome / Edge / Firefox all show the contrast ratio and AA/AAA pass/fail directly)
 - [ ] Exempt: purely decorative text, logotypes, disabled components
 - [ ] Every interactive element has visible hover and focus states; focus indicator ≥2px with ≥3:1 contrast against the background (live claude.com measured: `outline: 2px solid #c46849`, offset 4px on product pages; `#c96442`, offset 2px on brand pages)
 - [ ] Disabled state: alpha fade-out (text-muted color, alpha ≤50%; Material 3: 38% foreground) — exempt from contrast thresholds, but no hover effect and a non-color cue it is inert (e.g. `cursor: not-allowed`)
 - [ ] Conditional states where applicable: async data → loading and error states; data-driven page → empty state. Missing means go back and build them
 
 ## Verification
-- [ ] Headless Chrome screenshots (`--virtual-time-budget=5000` so animations finish) inspected with your own eyes: first screen, full-length page, narrow viewport
+- [ ] Headless browser screenshots via `scripts/headless-shot.sh` (auto-detects Chrome / Edge / Chromium / Brave / Vivaldi / Opera, Firefox fallback; on Chromium passes `--virtual-time-budget=5000` so animations finish) inspected with your own eyes: first screen, full-length page, narrow viewport
 - [ ] Animations are progressive enhancement: if the animation never runs (headless capture, reduced-motion, no-JS), every element is still fully visible — entrance animations with `fill: both` that freeze content at `opacity: 0` fail this check
-- [ ] Narrow-viewport screenshots: headless Chrome enforces a minimum layout width (~534px measured via a `window.innerWidth` probe page) regardless of `--window-size`; below that, the screenshot is a CROP of a wider layout and mimics horizontal overflow. Probe `innerWidth` before "fixing" CSS; treat ~534px as the narrowest testable width
+- [ ] Narrow-viewport screenshots: Chromium headless (Chrome / Edge) enforces a minimum layout width (~534px measured via a `window.innerWidth` probe page) regardless of `--window-size`; below that, the screenshot is a CROP of a wider layout and mimics horizontal overflow. Probe `innerWidth` before "fixing" CSS; treat ~534px as the narrowest testable width
 - [ ] Temporary screenshots / preview files deleted
