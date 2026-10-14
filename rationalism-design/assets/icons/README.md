@@ -4,6 +4,16 @@ Fill-style UI glyph set, uniform 24×24 grid, all `currentColor` (inherits host 
 Snapshot of the kimi-widget icon set, frozen 2026-08; upstream updates do not flow in
 automatically — refresh by re-copying when needed.
 
+## Copyright & License
+
+Copyright © Moonshot AI (月之暗面 / Kimi). **All rights reserved.**
+
+This directory is a snapshot of Kimi's product UI icon set, not an original work of this
+repository. It is **not** covered by the repository's MIT license (see
+[NOTICE.md](../../../NOTICE.md) at the repo root) and is included for personal learning
+and research only — do not redistribute these files separately or use them in any product
+without the rights holder's permission.
+
 ## Usage rules (stacked on `../../references/icons.md`)
 
 - **Inline the SVG** into the page; never reference these files at runtime (zero-dependency rule).

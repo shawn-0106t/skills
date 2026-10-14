@@ -55,6 +55,7 @@ Page sources and full-length screenshots live in [`demo/`](demo/).
   | porsche.cn dark performance-spec | zero radius, zero shadow, hairline seams, red ≤5% | data-dense pages, benchmarks, luxury feel |
   | Kimi platform docs monochrome | black-as-accent, neutral shadows, code-as-hero | API/developer docs, technical reference pages |
   | Kimi brand visual infra | two-tier color, fonts-by-role, dual grid, De-coding texture | brand pages, launch pages, marketing pages |
+  | Kimi app UI (www.kimi.com) | paper ground, alpha-black label/fill tiers, KMBlue as dot-only signal | chat/agent product UIs, assistant homepages, tool shells |
 - **Cross-cutting grammars** — chart color grammar (sequential by default, ≤5 categorical
   hues, colorblind-safe) and icon discipline (four measured tiers: controls / wayfinding /
   identity marks / restrained pictograms; inline SVG, one consistent grid per family,
@@ -79,6 +80,7 @@ rationalism-design/
 │   ├── case-porsche-dark-spec.md               # dark spec-sheet design system
 │   ├── case-kimi-platform-mono-docs.md         # monochrome docs design system
 │   ├── case-kimi-brand-visual-infra.md         # Kimi brand system: two-tier color, fonts-by-role, dual grid
+│   ├── case-kimi-chat-app.md                   # Kimi app chat UI: paper-alpha token system, dot-only color
 │   ├── chart-colors.md                         # chart color grammar
 │   ├── icons.md                                # icon discipline
 │   ├── nav-section-rail.md                     # section rail navigation: interaction skeleton + host-derived skin

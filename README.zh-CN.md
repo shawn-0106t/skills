@@ -51,6 +51,7 @@
   | 保时捷暗黑性能风 | 零圆角零阴影、发丝线分格、红色占比 ≤5% | 数据密集页、跑分/性能报告、高级感 |
   | Kimi 开放平台文档黑白风 | 黑即强调色、中性阴影、代码即 hero | API/开发者文档、技术参考页 |
   | Kimi 品牌视觉基建 | 双层色彩、按语义角色分配字体、双层网格、De-coding 纹理 | 品牌页、发布页、市场传播页 |
+  | Kimi 应用界面（www.kimi.com） | 纸面底色、α 黑标签/填充分层、KMBlue 仅作点状信号 | chat/agent 产品界面、助手首页、工具壳 |
 - **横向规范** —— 图表配色语法（默认顺序色阶、分类色 ≤5 种、色盲安全）和图标纪律
   （四个实测层级：控件 / 导航标记 / 标识 logo / 克制象形；内联 SVG、同一族内统一网格、
   `currentColor`），并内置一套 105 枚填充式图标库。
@@ -72,6 +73,7 @@ rationalism-design/
 │   ├── case-porsche-dark-spec.md               # 暗黑性能风格设计体系
 │   ├── case-kimi-platform-mono-docs.md         # 黑白文档风设计体系
 │   ├── case-kimi-brand-visual-infra.md         # Kimi 品牌体系：双层色彩、按角色分配字体、双层网格
+│   ├── case-kimi-chat-app.md                   # Kimi 应用 chat UI：paper-alpha token 体系、点状唯一彩色
 │   ├── chart-colors.md                         # 图表配色语法
 │   ├── icons.md                                # 图标纪律
 │   ├── nav-section-rail.md                     # 章节边栏导航：交互骨架测量 + 宿主页面皮肤

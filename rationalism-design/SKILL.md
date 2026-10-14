@@ -80,6 +80,7 @@ Walk `references/checklist.md`.
 | Dark performance-spec (porsche.cn) | Data-dense pages, benchmarks, performance reports, luxury feel | `references/case-porsche-dark-spec.md` |
 | Monochrome engineering docs (platform.kimi.com) | API/developer docs, spec sheets, technical reference; black-as-accent, neutral shadows, code-as-hero | `references/case-kimi-platform-mono-docs.md` |
 | Kimi brand visual infra (kimi.com/resources/kimi-brand) | Brand pages, launch pages, marketing pages needing the technology + humanism dual tone; two-tier color, fonts-by-role, dual grid, De-coding texture | `references/case-kimi-brand-visual-infra.md` |
+| Kimi app UI (www.kimi.com) | Chat/agent product interfaces, assistant homepages, tool shells wanting the Kimi-app look; paper ground + alpha-black label/fill tiers + KMBlue as dot-only signal | `references/case-kimi-chat-app.md` |
 | Chart color grammar | Any page with charts or data visualization | `references/chart-colors.md` |
 | Icon discipline | Any page that uses icons | `references/icons.md` |
 | Section rail navigation | Long single-page docs (≥4 anchored sections) needing edge wayfinding — interaction skeleton measured from kimi.com, skin regrown from the host page | `references/nav-section-rail.md` |
